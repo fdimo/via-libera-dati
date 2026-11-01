@@ -1,11 +1,20 @@
-# Via Libera — dati di zona
+# Librevia — dati di zona
 
-Questo archivio contiene i dati che l'app **Via Libera** scarica ogni giorno:
+Questo archivio contiene i dati che l'app **Librevia** scarica ogni giorno:
 per ogni zona, le stazioni ferroviarie, i passaggi a livello con la loro
 posizione lungo la linea, e l'orario dei treni del giorno.
 
 I file stanno in `aree/` (`aree/mantova.json`, …) e vengono rigenerati ogni notte
 da un programma automatico. Qui non c'è codice dell'applicazione: solo dati.
+
+Accanto ai file di zona ci sono:
+
+- `eventi-<zona>.json`: le chiusure programmate delle strade (ordinanze, cantieri, partite);
+- `autovelox-<zona>.json`: le postazioni di controllo della velocità (autovelox fissi, Tutor, semafori con
+  telecamera) e il loro limite, rifatte ogni notte. Il telefono non le legge da qui ma dal server, che ci aggiunge
+  quelle segnalate da chi usa l'app;
+- `velox-mit.json`: per ogni Comune delle zone, quanti apparecchi l'elenco nazionale del Ministero conta (fissi, Tutor,
+  di tipo non chiaro), senza posizioni. Si aggiorna una volta a settimana.
 
 ## Com'è fatto un file
 
@@ -44,9 +53,15 @@ del calcolo, non una velocità reale.
   dataset "Orario Ferroviario Regionale GTFS" di **Trenord**, licenza **CC-BY**.
 - **Treni in circolazione e orari del giorno**: **ViaggiaTreno** (RFI), servizio
   pubblico consultato con richieste limitate e con i risultati messi in cache.
+- **Postazioni di controllo** (`autovelox-<zona>.json`): da OpenStreetMap (© i contributori di OpenStreetMap,
+  **ODbL 1.0**, come sopra) e da un elenco nostro, controllato su atti pubblici degli enti.
+- **Apparecchi per Comune** (`velox-mit.json`): conteggi ricavati dall'elenco dei dispositivi di rilevamento della
+  velocità del [Ministero delle infrastrutture e dei trasporti](https://velox.mit.gov.it/dispositivi), licenza
+  **CC BY 3.0 IT**; il Comune viene dall'elenco dei Comuni dell'ISTAT. La fonte è scritta anche dentro il file.
 
-Chi riusa questi file è tenuto alle stesse condizioni: citare OpenStreetMap e
-Trenord, e distribuire eventuali derivati sotto ODbL.
+Chi riusa questi file è tenuto alle stesse condizioni: citare OpenStreetMap,
+Trenord e il Ministero delle infrastrutture e dei trasporti, e distribuire eventuali derivati dei dati di
+OpenStreetMap sotto ODbL.
 
 ## Avvertenza
 
